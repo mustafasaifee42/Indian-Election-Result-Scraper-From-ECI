@@ -2,7 +2,9 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import json
 
-
+'''
+data_combined.json has result for 2014 and 2009 also.
+'''
 with open('data_combined.json', "r") as read_file:
     dataList = json.load(read_file)
 
@@ -70,9 +72,13 @@ for data in dataList:
             data['2019-Result']['VotersInfo']['TotalVoters'] = 'NA'
             data['2019-Result']['VotersInfo']['TurnOutPercentage'] = 'NA'
 
-
-with open("data_scraped_9_22.json", "w") as write_file:
-    json.dump(dataList, write_file, indent=2)
+'''
+Vellore has candidates as NA since vellore data is not available in 2019.
+'''
 
 with open("data_scraped.json", "w") as write_file:
     json.dump(dataList, write_file, indent=2)
+    
+'''
+data_scraped.json is the final data sheet
+'''
